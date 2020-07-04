@@ -1,0 +1,25 @@
+<p>
+  property-details works!
+  this property is number {{propertId}}
+</p>
+<button class="btn btn-primary" (click)="onSelectNext()">Next</button>
+<br /><br />
+<button class="btn btn-primary" routerLink="/property-details/1">1</button>
+<button class="btn btn-primary" routerLink="/property-details/2">2</button>
+<button class="btn btn-primary" routerLink="/property-details/3">3</button>
+
+
+<button class="btn btn-primary" [routerLink]="['/property-details','4']">4</button>
+
+<br /><br />
+<carousel [itemsPerSlide]="itemsPerSlide"
+          [singleSlideOffset]="singleSlideOffset"
+          [interval]="false"
+          [noWrap]="noWrap">
+  <slide *ngFor="let slide of slides; let index=index" class="mx-auto">
+    <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
+    <div class="carousel-caption">
+      <h4>Slide {{index}}</h4>
+    </div>
+  </slide>
+</carousel>

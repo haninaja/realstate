@@ -1,0 +1,49 @@
+[
+  {
+    "Id":1,
+    "SellRent":1,
+    "Name":"aaa house",
+    "Type":"house",
+    "Price":2000,
+    "image":"house-1.jpg"
+  },
+  {
+    "Id":2,
+    "SellRent":2,
+    "Name":"bbb house",
+    "Type":"house",
+    "Price":3000,
+    "image":"house-2.jpg"
+  },
+  {
+    "Id":3,
+    "SellRent":1,
+    "Name":"ccc house",
+    "Type":"house",
+    "Price":1000,
+    "image":"house-3.jpg"
+  },
+  {
+    "Id":4,
+    "SellRent":2,
+    "Name":"ddd house",
+    "Type":"house",
+    "Price":4000,
+    "image":"house-4.jpg"
+  },
+  {
+    "Id":5,
+    "SellRent":1,
+    "Name":"eee house",
+    "Type":"house",
+    "Price":4000,
+    "image":"house-5.jpg"
+  },
+  {
+    "Id":6,
+    "SellRent":2,
+    "Name":"fff house",
+    "Type":"house",
+    "Price":4000
+  }
+]

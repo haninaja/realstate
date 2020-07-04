@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-header">
+    Add New Property
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+
+      <div class="form-group col-12">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" #propertyname="ngModel" ngModel name="name" minlength="5" required>
+        <span class="error-block" *ngIf="!propertyname.valid && propertyname.touched">
+          <span *ngIf="propertyname.errors.required">this field is required</span>
+          <span *ngIf="propertyname.errors.minlength">Min length is 5 characters</span>
+        </span>
+      </div>
+
+      <div class="form-group col-12">
+        <label for="type">Type</label>
+        <input class="form-control" type="text" ngModel name="type">
+      </div>
+
+      <div class="form-group col-12">
+        <label for="price">Price</label>
+        <input class="form-control" type="text" ngModel name="price">
+      </div>
+
+      <div class="form-group col-12">
+        <button [disabled]="!myForm.valid" type="submit" class="btn btn-primary mr-2">Save</button>
+        <button type="reset" class="btn btn-secondary">Cancel</button>
+
+      </div>
+
+
+
+    </form>
+  </div>
+</div>
+
+
+
+
+<!-- all type of validation
+  class Validators {
+  static min(min: number): ValidatorFn
+  static max(max: number): ValidatorFn
+  static required(control: AbstractControl): ValidationErrors | null
+  static requiredTrue(control: AbstractControl): ValidationErrors | null
+  static email(control: AbstractControl): ValidationErrors | null
+  static minLength(minLength: number): ValidatorFn
+  static maxLength(maxLength: number): ValidatorFn
+  static pattern(pattern: string | RegExp): ValidatorFn
+  static nullValidator(control: AbstractControl): ValidationErrors | null
+  static compose(validators: ValidatorFn[]): ValidatorFn | null
+  static composeAsync(validators: AsyncValidatorFn[]): AsyncValidatorFn | null
+}
+-->
+
+<button class="btn btn-primary" (click)="onBack()">back</button>

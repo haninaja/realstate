@@ -1,16 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  Input } from '@angular/core';
+import { IProperty } from '../IProperty';
 
 @Component({
   selector: 'app-property-card',
   templateUrl: './property-card.component.html',
   styleUrls: ['./property-card.component.css']
 })
-export class PropertyCardComponent implements OnInit {
-  property:any ={
-    Id:1,
-    Name:"Langly house",
-    Type:"House",
-    Price:2300
-  }
+export class PropertyCardComponent{
+  @Input() property: IProperty ;
 
 }
