@@ -14,6 +14,7 @@ constructor(private http: HttpClient) { }
 getAllProperties(sellRent: number): Observable<IProperty[]>{
   return this.http.get('data/properties.json').pipe(
     map(data => {
+      //console.log(data);
       const PropertiesListArray: Array<IProperty> = [];
       for (const id in data){
         if (data.hasOwnProperty(id) && data[id].SellRent === sellRent){

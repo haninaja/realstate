@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';  // API| service register
+import { Routes, RouterModule } from '@angular/router';  // routing service register
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // for rgx bootstrap
@@ -11,7 +11,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 // carousel
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
-
+// component
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
@@ -21,6 +21,7 @@ import { PropertyDetailsComponent } from './property/property-details/property-d
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 
+// services
 import { HousingService } from './services/housing.service';
 import { UserService } from './services/user.service';
 import { AlertfyService } from './services/alertfy.service';
@@ -51,8 +52,8 @@ const appRoutes: Routes = [
    ],
    imports: [
       BrowserModule,
-      HttpClientModule,
-      RouterModule.forRoot(appRoutes),
+      HttpClientModule,  // API services
+      RouterModule.forRoot(appRoutes),   // routing services
       FormsModule,
       ReactiveFormsModule,
       BrowserAnimationsModule,

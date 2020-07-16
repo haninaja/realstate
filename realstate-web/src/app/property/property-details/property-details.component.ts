@@ -29,7 +29,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.propertId = +this.route.snapshot.params.id;
 
     this.route.params.subscribe(
-      (params) => this.propertId = +params.id
+      (params) => this.propertId = +params.id  // + mean convert to number
     );
   }
 

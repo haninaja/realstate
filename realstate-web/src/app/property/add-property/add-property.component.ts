@@ -27,6 +27,7 @@ export class AddPropertyComponent implements OnInit {
 
   // or use @ViewChild('myForm') properyForm: NgForm; and
   onSubmit(){
-    console.log(this.properyForm);
+    console.log(this.properyForm);  // as NgForm we can access every control in the form
+    console.log(this.properyForm.value);  // json object for the form control value
   }
 }
