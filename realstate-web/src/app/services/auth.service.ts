@@ -13,7 +13,7 @@ authUser(user: any): any{
     UserArray = JSON.parse(localStorage.getItem('Users'));
     console.log(UserArray);
   }
-  return UserArray.find(p => p.userName === user.name && p.password === user.password);
+  return UserArray.find(p => p.userName === user.userName && p.password === user.password);
 }
 
 }

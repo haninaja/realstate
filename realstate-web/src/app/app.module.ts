@@ -1,15 +1,21 @@
+import { PropertyDetailResolver } from './property/property-details/property-detail-resolver';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';  // API| service register
 import { Routes, RouterModule } from '@angular/router';  // routing service register
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-// for rgx bootstrap
+// for ngx bootstrap
 // dropdown
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-// carousel
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+
+// carousel for images gallery require  npm install @kolkov/ngx-gallery --save
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 // component
 import { AppComponent } from './app.component';
@@ -27,13 +33,17 @@ import { UserService } from './services/user.service';
 import { AlertfyService } from './services/alertfy.service';
 import { AuthService } from './services/auth.service';
 
+// pipes
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+
 
 
 const appRoutes: Routes = [
   {path: '', component: PropertyListComponent},
   {path: 'rent-property', component: PropertyListComponent},
   {path: 'add-property', component: AddPropertyComponent},
-  {path: 'property-details/:id', component: PropertyDetailsComponent},
+  {path: 'property-details/:id', component: PropertyDetailsComponent, resolve: {prp: PropertyDetailResolver}},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'user/register', component: UserRegisterComponent},
   {path: '**', component: PropertyListComponent},
@@ -48,7 +58,9 @@ const appRoutes: Routes = [
       AddPropertyComponent,
       PropertyDetailsComponent,
       UserLoginComponent,
-      UserRegisterComponent
+      UserRegisterComponent,
+      FilterPipe,
+      SortPipe
    ],
    imports: [
       BrowserModule,
@@ -58,13 +70,17 @@ const appRoutes: Routes = [
       ReactiveFormsModule,
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
-      CarouselModule.forRoot()
+      TabsModule.forRoot(),   // for ngx-bootstrap tabs
+      ButtonsModule.forRoot(), // for ngx-bootstrap radio button
+      BsDatepickerModule.forRoot(),
+      NgxGalleryModule
    ],
    providers: [
     HousingService,
     UserService,
     AlertfyService,
-    AuthService
+    AuthService,
+    PropertyDetailResolver
    ],
    bootstrap: [
       AppComponent

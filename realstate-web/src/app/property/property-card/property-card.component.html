@@ -1,21 +1,35 @@
 
-    <div class="card img-zoom">
-      <div class="card-img-wrapper rounded-lg">
-        <img *ngIf="property.image" src="assets/images/{{property.image}}" class="card-img-top" alt="...">
-        <img *ngIf="!property.image" src="assets/images/house-default.jpg" class="card-img-top" alt="...">
-        <ul class="list-inline text-center member-icons icon-animate">
-          <li class="list-inline-item">
-            <button class="btn btn-primary" routerLink="/property-details/{{property.Id}}"><i class="far fa-edit"></i></button>
-          </li>
-          <li class="list-inline-item">
-            <button class="btn btn-primary"><i class="far fa-id-badge"></i></button>
-          </li>
-        </ul>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{property.Name}}</h5>
-        <p class="card-text">{{property.Type}}</p>
-        <p class="card-text">{{property.Price}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
+  <div class="card img-zoom border rounded h-100 shadow-sm">
+    <div class="card-img-wrapper rounded-lg">
+      <img *ngIf="property.Image" src="assets/images/{{property.Image}}" class="card-img-top" alt="...">
+      <img *ngIf="!property.Image" src="assets/images/house-default.jpg" class="card-img-top" alt="...">
+
+      <ul *ngIf="!hideIcons" class="list-inline text-center member-icons icon-animate">
+        <li class="list-inline-item">
+          <button class="btn btn-primary" routerLink="/property-details/{{property.Id}}"><i
+              class="far fa-edit"></i></button>
+        </li>
+        <li class="list-inline-item">
+          <button class="btn btn-primary"><i class="far fa-id-badge"></i></button>
+        </li>
+      </ul>
+
     </div>
+
+    <div class="card-body p-1 border-0">
+      <h2 class="mb-0"> {{property.BHK}} BHK {{property.PType}} </h2>
+
+      in {{property.Name}}
+      <span *ngIf="property.Name">,</span>
+      {{property.City}}
+
+      <h6 class="mt-2">{{property.FType}}
+        <span *ngIf="property.FType !== 'Unfurnished'">Furnished</span> | Ready to Move</h6>
+
+      <hr class="mt-0 mb-2">
+
+      <h6 class="mb-0">Price: <span class="font-highlight">{{property.Price}} USD.</span> |
+        Area: <span class="font-highlight">{{property.BuiltArea}} Sq Ft </span> </h6>
+    </div>
+
+  </div>

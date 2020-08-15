@@ -46,8 +46,12 @@ export class UserRegisterComponent implements OnInit {
       confirmPassword: [null, Validators.required],
       mobile: [null, [Validators.required, Validators.maxLength(10)]]
     }, {validators: this.passwordMatchingValidator});
+
+   // this.registrationForm.controls['userName'].setValue('default value');
   }
 
+  // this called cross filed validation: should be at formgroup level
+  // use custom validator
   // validation Function return null or js object {key:value} for the errors prop. , null mean valid
   passwordMatchingValidator(fg: FormGroup): Validators{
     return fg.get('password').value === fg.get('confirmPassword').value ? null : {notmatched: true};
@@ -57,9 +61,9 @@ export class UserRegisterComponent implements OnInit {
     console.log(this.registrationForm.value);
     this.userSubmitted = true;
     if (this.registrationForm.valid){
-      // this.user=Object.assign(this.user,this.registrationForm.value);
-      console.log(this.user);
+      // this.user=Object.assign(this.user,this.registrationForm.value);  // define User type and use function userData() instead
       // localStorage.setItem('Users',JSON.stringify(this.user));  //this for only one user
+      // console.log(this.user);
       this.userService.addUser(this.userData());
       this.registrationForm.reset();
       this.userSubmitted = false;
@@ -70,7 +74,7 @@ export class UserRegisterComponent implements OnInit {
     }
 
   }
-
+  // mapping function
   userData(): User {
     return this.user = {
       userName: this.userName.value,
@@ -82,7 +86,8 @@ export class UserRegisterComponent implements OnInit {
 
   // Geter methods for all controls ------------------------------------------
   get userName(){
-    return this.registrationForm.get('userName') as FormControl;
+    // return this.registrationForm.get('userName') as FormControl;   // or
+    return this.registrationForm.controls.userName as FormControl;
   }
   get email(){
     return this.registrationForm.get('email') as FormControl;
